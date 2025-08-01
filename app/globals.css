@@ -32,14 +32,33 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-inter), sans-serif;
+    /* iOS specific fixes */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+
+  .min-h-screen {
+    min-height: -webkit-fill-available;
   }
 }
 
 html {
   scroll-behavior: smooth;
+  /* iOS Safari viewport fix */
+  height: -webkit-fill-available;
 }
 
 /* Custom scrollbar */
@@ -67,10 +86,12 @@ html {
 
 /* Custom animations */
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }

@@ -382,13 +382,13 @@ export default function BoxingAcademyLanding() {
       </section>
 
       {/* Plans Section */}
-      <section id="planos" className="py-20 bg-gradient-to-b from-black to-gray-900">
+      <section id="planos" className="py-20 bg-gradient-to-b from-black to-gray-900 min-h-screen">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-6xl mx-auto"
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
           >
             <motion.div className="text-center mb-16" variants={fadeInUp}>
@@ -449,31 +449,36 @@ export default function BoxingAcademyLanding() {
                   color: "border-[#DB1F1F]",
                 },
               ].map((plan, index) => (
-                <motion.div key={index} variants={fadeInUp} custom={index}>
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  custom={index}
+                  className="w-full"
+                >
                   <Card
-                    className={`flex flex-col justify-between p-4 bg-gray-800/50 ${plan.color} border-2 hover:scale-105 transition-all duration-300 h-full relative overflow-hidden group ${plan.popular ? "shadow-2xl shadow-[#FFD700]/20" : ""}`}
+                    className={`flex flex-col justify-between bg-gray-800/50 ${plan.color} border-2 hover:scale-105 transition-all duration-300 h-full relative overflow-hidden group ${plan.popular ? "shadow-2xl shadow-[#FFD700]/20" : ""} min-h-[400px] w-full`}
                   >
                     {plan.popular && (
-                      <div className="absolute top-0 left-0 right-0 bg-[#FFD700] text-black text-center py-2 font-bold text-sm">
+                      <div className="absolute top-0 left-0 right-0 bg-[#FFD700] text-black text-center py-2 font-bold text-sm z-10">
                         MAIS POPULAR
                       </div>
                     )}
-                    <CardContent className={`p-6 ${plan.popular ? "pt-12" : ""}`}>
-                      <div>
-                        <div className="text-center mb-6">
-                          <h3 className="text-2xl font-black text-white mb-2 font-anton">{plan.name}</h3>
+                    <CardContent className={`p-4 md:p-6 flex flex-col justify-between h-full ${plan.popular ? "pt-12" : "pt-4"}`}>
+                      <div className="flex-grow">
+                        <div className="text-center mb-4 md:mb-6">
+                          <h3 className="text-xl md:text-2xl font-black text-white mb-2 font-anton">{plan.name}</h3>
                           <div className="flex items-baseline justify-center mb-2">
-                            <span className="text-4xl font-bold text-[#FFD700]">{plan.price}</span>
+                            <span className="text-3xl md:text-4xl font-bold text-[#FFD700]">{plan.price}</span>
                             <span className="text-gray-400 ml-1">{plan.period}</span>
                           </div>
                           <p className="text-gray-300 text-sm">{plan.description}</p>
                         </div>
 
-                        <ul className="space-y-3 mb-8">
+                        <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 flex-grow">
                           {plan.features.map((feature, featureIndex) => (
-                            <li key={featureIndex} className="flex items-center text-gray-300">
-                              <div className="w-2 h-2 bg-[#25D366] rounded-full mr-3 flex-shrink-0"></div>
-                              {feature}
+                            <li key={featureIndex} className="flex items-start text-gray-300 text-sm md:text-base">
+                              <div className="w-2 h-2 bg-[#25D366] rounded-full mr-3 flex-shrink-0 mt-2"></div>
+                              <span className="leading-relaxed">{feature}</span>
                             </li>
                           ))}
                         </ul>
@@ -484,15 +489,15 @@ export default function BoxingAcademyLanding() {
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-full py-3 rounded-full font-bold text-center transition-all duration-300 flex items-center justify-center gap-2 ${plan.popular
+                      className={`w-full py-3 md:py-4 px-4 rounded-full font-bold text-center transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base mt-auto ${plan.popular
                         ? "bg-[#FFD700] text-black hover:bg-[#e6c200]"
                         : "bg-[#25D366] text-white hover:bg-[#20b358]"
                         }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <MessageCircle size={18} />
-                      Escolher Plano
+                      <MessageCircle size={16} className="md:w-[18px] md:h-[18px]" />
+                      <span className="whitespace-nowrap">Escolher Plano</span>
                     </motion.a>
                   </Card>
                 </motion.div>
@@ -505,78 +510,72 @@ export default function BoxingAcademyLanding() {
                 Horários de <span className="text-[#FFD700]">Funcionamento</span>
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
                 {/* Segunda a Sexta */}
-                <Card className="bg-gray-800/50 border-gray-700">
-                  <CardContent className="p-6">
-                    <h4 className="text-xl font-bold text-[#FFD700] mb-4 flex items-center gap-2">
-                      <Clock className="w-5 h-5" />
-                      Segunda a Sexta
-                    </h4>
-                    <div className="space-y-2 text-gray-300">
-                      <div className="flex justify-between">
-                        <span>Manhã:</span>
-                        <span className="font-semibold">09:00 - 14:00</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Tarde:</span>
-                        <span className="font-semibold">14:00 - 18:00</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Noite:</span>
-                        <span className="font-semibold">18:00 - 22:00</span>
-                      </div>
+                <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 md:p-6">
+                  <h4 className="text-lg md:text-xl font-bold text-[#FFD700] mb-3 md:mb-4 flex items-center gap-2">
+                    <Clock className="w-4 h-4 md:w-5 md:h-5" />
+                    <span className="text-sm md:text-base">Segunda a Sexta</span>
+                  </h4>
+                  <div className="space-y-2 text-gray-300 text-sm md:text-base">
+                    <div className="flex justify-between items-center">
+                      <span>Manhã:</span>
+                      <span className="font-semibold">09:00 - 14:00</span>
                     </div>
-                  </CardContent>
-                </Card>
+                    <div className="flex justify-between items-center">
+                      <span>Tarde:</span>
+                      <span className="font-semibold">14:00 - 18:00</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>Noite:</span>
+                      <span className="font-semibold">18:00 - 22:00</span>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Sábado */}
-                <Card className="bg-gray-800/50 border-gray-700">
-                  <CardContent className="p-6">
-                    <h4 className="text-xl font-bold text-[#FFD700] mb-4 flex items-center gap-2">
-                      <Clock className="w-5 h-5" />
-                      Sábado
-                    </h4>
-                    <div className="space-y-2 text-gray-300">
-                      <div className="flex justify-between">
-                        <span>Manhã:</span>
-                        <span className="font-semibold">09:00 - 12:00</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Tarde:</span>
-                        <span className="text-gray-500">Fechado</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Noite:</span>
-                        <span className="text-gray-500">Fechado</span>
-                      </div>
+                <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 md:p-6">
+                  <h4 className="text-lg md:text-xl font-bold text-[#FFD700] mb-3 md:mb-4 flex items-center gap-2">
+                    <Clock className="w-4 h-4 md:w-5 md:h-5" />
+                    <span className="text-sm md:text-base">Sábado</span>
+                  </h4>
+                  <div className="space-y-2 text-gray-300 text-sm md:text-base">
+                    <div className="flex justify-between items-center">
+                      <span>Manhã:</span>
+                      <span className="font-semibold">09:00 - 12:00</span>
                     </div>
-                  </CardContent>
-                </Card>
+                    <div className="flex justify-between items-center">
+                      <span>Tarde:</span>
+                      <span className="text-gray-500">Fechado</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>Noite:</span>
+                      <span className="text-gray-500">Fechado</span>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Domingo */}
-                <Card className="bg-gray-800/50 border-gray-700">
-                  <CardContent className="p-6">
-                    <h4 className="text-xl font-bold text-[#FFD700] mb-4 flex items-center gap-2">
-                      <Clock className="w-5 h-5" />
-                      Domingo
-                    </h4>
-                    <div className="space-y-2 text-gray-300">
-                      <div className="flex justify-between">
-                        <span>Manhã:</span>
-                        <span className="text-gray-500">Fechado</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Tarde:</span>
-                        <span className="text-gray-500">Fechado</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Noite:</span>
-                        <span className="text-gray-500">Fechado</span>
-                      </div>
+                <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 md:p-6">
+                  <h4 className="text-lg md:text-xl font-bold text-[#FFD700] mb-3 md:mb-4 flex items-center gap-2">
+                    <Clock className="w-4 h-4 md:w-5 md:h-5" />
+                    <span className="text-sm md:text-base">Domingo</span>
+                  </h4>
+                  <div className="space-y-2 text-gray-300 text-sm md:text-base">
+                    <div className="flex justify-between items-center">
+                      <span>Manhã:</span>
+                      <span className="text-gray-500">Fechado</span>
                     </div>
-                  </CardContent>
-                </Card>
+                    <div className="flex justify-between items-center">
+                      <span>Tarde:</span>
+                      <span className="text-gray-500">Fechado</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span>Noite:</span>
+                      <span className="text-gray-500">Fechado</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
