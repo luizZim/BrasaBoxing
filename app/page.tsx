@@ -31,11 +31,21 @@ export default function BoxingAcademyLanding() {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
     setIsMenuOpen(false)
+
+    // Pequeno delay para permitir que o menu feche antes do scroll
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        const headerHeight = 80 // altura aproximada do header fixo
+        const elementPosition = element.offsetTop - headerHeight
+
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth"
+        })
+      }
+    }, 100)
   }
 
   const fadeInUp = {
@@ -71,7 +81,7 @@ export default function BoxingAcademyLanding() {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <nav className="md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-8">
               {["inicio", "sobre", "beneficios", "planos", "depoimentos", "contato"].map((item) => (
                 <motion.button
                   key={item}
@@ -145,7 +155,7 @@ export default function BoxingAcademyLanding() {
       </motion.header>
 
       {/* Hero Section */}
-      <section id="inicio" className="pt-16 relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="inicio" className="pt-24 relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
           <div className="absolute inset-0 bg-black bg-[url('/background.jpeg?height=1080&width=1920')] bg-contain bg-no-repeat bg-center opacity-20"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
@@ -216,16 +226,6 @@ export default function BoxingAcademyLanding() {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-        >
-          <div className="w-6 h-10 border-2 border-[#FFD700] rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-[#FFD700] rounded-full mt-2"></div>
-          </div>
-        </motion.div>
       </section>
 
       {/* About Section */}
@@ -604,46 +604,40 @@ export default function BoxingAcademyLanding() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4">
               {[
                 {
-                  name: "Carlos Silva",
-                  age: "32 anos",
-                  text: "Perdi 15kg em 6 meses e ganhei uma confiança que nunca tive. O boxe mudou minha vida completamente!",
+                  name: "Claudio Goes",
+                  text: "Comecei a lutar faz 3 meses e já pude ter resultados excelentes, pratiquei outras lutas, mas o boxe tem sido uma experiência bem diferente!",
                   rating: 5,
-                  image: "/placeholder.svg?height=80&width=80",
+                  image: "/claudio.jpg?height=80&width=80",
                 },
                 {
-                  name: "Ana Rodrigues",
-                  age: "28 anos",
-                  text: "Sempre tive medo de me defender. Hoje me sinto segura e forte. Os professores são incríveis!",
+                  name: "Davi Samuel",
+                  text: "O boxe me ensinou a ter disciplina e foco. Comecei a treinar conforme o tempo que tinha, só aos sábados, mas mesmo assim tenho evoluído cada vez mais!",
                   rating: 5,
-                  image: "/placeholder.svg?height=80&width=80",
+                  image: "/davi.jpg?height=80&width=80",
                 },
                 {
-                  name: "João Santos",
-                  age: "45 anos",
-                  text: "Começei aos 40 achando que era tarde. Hoje sou mais forte que aos 30! Nunca é tarde para começar.",
+                  name: "Luiz Henrique",
+                  text: "Pratiquei outras lutas, mas sempre tive vontade de fazer o boxe, porém tinha medo do que falavam. Quando comecei, graças à academia e ao professor, vi que era tudo completamente diferente.",
                   rating: 5,
-                  image: "/placeholder.svg?height=80&width=80",
+                  image: "/luiz.jpg?height=80&width=80",
                 },
                 {
-                  name: "Maria Costa",
-                  age: "35 anos",
-                  text: "O ambiente é família! Todos se ajudam e incentivam. É mais que uma academia, é uma comunidade.",
+                  name: "Jorge Félix",
+                  text: "No início foi difícil, levei alguns meses para pegar o ritmo. Mas a persistência valeu a pena! Hoje me sinto um lutador completo e confiante.",
                   rating: 5,
-                  image: "/placeholder.svg?height=80&width=80",
+                  image: "/jorge.jpg?height=80&width=80",
                 },
                 {
-                  name: "Pedro Lima",
-                  age: "22 anos",
-                  text: "Comecei como hobby e hoje compito em nível estadual. O suporte técnico aqui é de outro nível!",
+                  name: "Bruno Henrique",
+                  text: "Entrei aqui sem expectativa alguma, apenas para exercitar. Com o tempo fui percebendo melhorias no condicionamento e na técnica. Hoje participo de treinos mais avançados e me sinto muito mais preparado.",
                   rating: 5,
-                  image: "/placeholder.svg?height=80&width=80",
+                  image: "/bruno.jpg?height=80&width=80",
                 },
                 {
-                  name: "Lucia Ferreira",
-                  age: "29 anos",
-                  text: "Melhor investimento que já fiz! Saúde física e mental em dia. Recomendo de olhos fechados!",
+                  name: "Bruno Jobim",
+                  text: "Academia top! Treinos intensos e ambiente motivador. Recomendo!",
                   rating: 5,
-                  image: "/placeholder.svg?height=80&width=80",
+                  image: "/brunoJobim.jpg?height=80&width=80",
                 },
               ].map((testimonial, index) => (
                 <motion.div key={index} variants={fadeInUp} custom={index}>
@@ -661,7 +655,6 @@ export default function BoxingAcademyLanding() {
                           <h4 className="font-bold text-white group-hover:text-[#FFD700] transition-colors">
                             {testimonial.name}
                           </h4>
-                          <p className="text-gray-400 text-sm">{testimonial.age}</p>
                         </div>
                       </div>
 
@@ -683,7 +676,10 @@ export default function BoxingAcademyLanding() {
 
       {/* Final CTA Section */}
       <section id="contato" className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/background.jpeg?height=600&width=1200')] bg-cover bg-no-repeat bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
+          <div className="absolute inset-0 bg-black bg-[url('/background.jpeg?height=1080&width=1920')] bg-contain bg-no-repeat bg-center opacity-20"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
+        </div>
         <div className="relative z-10 container mx-auto px-4">
           <motion.div
             className="max-w-4xl mx-auto text-center"
