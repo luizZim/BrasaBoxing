@@ -456,7 +456,7 @@ export default function BoxingAcademyLanding() {
                   className="w-full"
                 >
                   <Card
-                    className={`flex flex-col justify-between bg-gray-800/50 ${plan.color} border-2 hover:scale-105 transition-all duration-300 h-full relative overflow-hidden group ${plan.popular ? "shadow-2xl shadow-[#FFD700]/20" : ""} min-h-[400px] w-full`}
+                    className={`flex flex-col justify-between bg-gray-800/50 ${plan.color} border-2 hover:scale-105 transition-all duration-300 h-full relative overflow-hidden group ${plan.popular ? "shadow-2xl shadow-[#FFD700]/20" : ""} min-h-[400px] w-full p-4 md:p-6`}
                   >
                     {plan.popular && (
                       <div className="absolute top-0 left-0 right-0 bg-[#FFD700] text-black text-center py-2 font-bold text-sm z-10">
@@ -464,7 +464,7 @@ export default function BoxingAcademyLanding() {
                       </div>
                     )}
                     <CardContent className={`p-4 md:p-6 flex flex-col justify-between h-full ${plan.popular ? "pt-12" : "pt-4"}`}>
-                      <div className="flex-grow">
+                      <div className="flex-grow px-2 md:px-4">
                         <div className="text-center mb-4 md:mb-6">
                           <h3 className="text-xl md:text-2xl font-black text-white mb-2 font-anton">{plan.name}</h3>
                           <div className="flex items-baseline justify-center mb-2">
@@ -474,7 +474,7 @@ export default function BoxingAcademyLanding() {
                           <p className="text-gray-300 text-sm">{plan.description}</p>
                         </div>
 
-                        <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 flex-grow">
+                        <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 flex-grow px-2">
                           {plan.features.map((feature, featureIndex) => (
                             <li key={featureIndex} className="flex items-start text-gray-300 text-sm md:text-base">
                               <div className="w-2 h-2 bg-[#25D366] rounded-full mr-3 flex-shrink-0 mt-2"></div>
@@ -485,20 +485,22 @@ export default function BoxingAcademyLanding() {
                       </div>
                     </CardContent>
 
-                    <motion.a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-full py-3 md:py-4 px-4 rounded-full font-bold text-center transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base mt-auto ${plan.popular
-                        ? "bg-[#FFD700] text-black hover:bg-[#e6c200]"
-                        : "bg-[#25D366] text-white hover:bg-[#20b358]"
-                        }`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <MessageCircle size={16} className="md:w-[18px] md:h-[18px]" />
-                      <span className="whitespace-nowrap">Escolher Plano</span>
-                    </motion.a>
+                    <div className="px-4 md:px-6 pb-4 md:pb-6">
+                      <motion.a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`w-full py-3 md:py-4 px-4 rounded-full font-bold text-center transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base ${plan.popular
+                          ? "bg-[#FFD700] text-black hover:bg-[#e6c200]"
+                          : "bg-[#25D366] text-white hover:bg-[#20b358]"
+                          }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <MessageCircle size={16} className="md:w-[18px] md:h-[18px]" />
+                        <span className="whitespace-nowrap">Escolher Plano</span>
+                      </motion.a>
+                    </div>
                   </Card>
                 </motion.div>
               ))}
