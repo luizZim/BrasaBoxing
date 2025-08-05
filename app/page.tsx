@@ -265,12 +265,12 @@ export default function BoxingAcademyLanding() {
                 </h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
                   Fundada em 2020, nossa academia nasceu da paixão pelo boxe autêntico e pela transformação de vidas.
-                  Começamos com um pequenos paços e grandes sonhos.
+                  Começamos com pequenos passos e grandes sonhos.
                 </p>
                 <p className="text-gray-300 text-lg leading-relaxed">
                   Hoje somos referência como academia de boxe, com mais de{" "}
-                  <span className="text-[#FFD700] font-semibold">150 alunos</span> e dezenas de campeões que se tornam
-                  parte da nossa família. Cada treino é uma oportunidade de superação, disciplina e crescimento pessoal.
+                  <span className="text-[#FFD700] font-semibold">150 alunos</span>  e dezenas de campeões que se tornam parte da nossa família. Cada treino é uma
+                  oportunidade de superação, disciplina e crescimento pessoal.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mt-6 md:mt-8">
